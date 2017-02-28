@@ -1,0 +1,53 @@
+---
+layout: default
+---
+<!-- Post -->
+<div class="blogpost">
+
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	  <header class="post-header">
+
+	    <h3 class="post-title pb-1" itemprop="name headline">{{ page.title }}</h3>
+
+	    <div class="row bg-inverse3">
+	    <div class="post-meta blogpost-meta col-12 pt-1 pb-2">
+		    <small>
+		    	<strong>Date:</strong>
+		    	<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+
+		    	<br />
+
+		    {% if page.author %}
+		    	<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+		    	<strong>Author:</strong>
+		    		<span itemprop="name">
+		    			{{ page.author }}
+		    		</span>
+		    	</span>
+		    {% endif %}
+		    </small>
+	    </div>
+	    </div>
+
+	  </header>
+
+	  <div class="post-content text-justify mt-3" itemprop="articleBody">
+	    {{ content }}
+	  </div>
+
+	  <h6 class="text-sm-right">
+		  <small class="font-weight-bold">
+		  	| <a href="{{ site.baseurl }}/{{page.categories}}/">Back</a> |
+		  </small>
+	  </h6>
+
+	</article>
+
+</div>
+
+<hr>
+<!-- End of Post -->
+{% if page.comments %}
+	{% include disqus.html %}
+{% endif %}

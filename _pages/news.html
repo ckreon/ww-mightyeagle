@@ -1,0 +1,34 @@
+---
+layout: page
+title: News
+permalink: /news/
+nav: true
+position: 1
+---
+
+<div class="blogpost mt-3">
+	<hr class="m-0">
+	{% for post in site.categories.news %}
+	<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+		<div class="row">
+		  <div class="font-weight-bold h4 col-12 hdr pt-2 mb-0">
+		    	{{ post.title }}
+		  </div>
+		  <div class="post-meta col-12 hdr no-deco pb-2">
+		  	<small class="font-weight-bold">
+		  		{{ post.date | date: "%b %-d, %Y" }} | {{ post.author }}
+		  	</small>
+	  	</div>
+
+	    <div class="entry col-12 no-deco text-justify py-2">
+	      {{ post.content | truncatewords:60}}
+	    </div>
+
+		</div>
+	</a>
+	<hr class="m-0">
+	{% endfor %}
+
+	<br />
+
+</div>

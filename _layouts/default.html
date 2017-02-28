@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+    
+    {% include nav.html %}
+
+    <!-- Main Container -->
+    <div class="container">
+
+      <a class="anchor" name="top-of-page"></a>
+
+      {{ content }}
+
+    </div>
+    <!-- End of Main Container -->
+
+    {% include footer.html %}
+
+    {% js main %}
+    
+    {% include statcounter.html %}
+
+  </body>
+
+</html>

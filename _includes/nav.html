@@ -1,0 +1,58 @@
+<!-- Nav -->
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-sm fixed-top" role="navigation">
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a class="navbar-brand" href="{{ site.baseurl }}/">
+		{{ site.title }}
+	</a>
+	<div id="navCollapse" class="collapse navbar-collapse justify-content-end">
+		<ul class="navbar-nav ml-auto">
+
+			{% assign nav_links = site.pages | where: "nav", "true" | sort: "position" %}
+			{% for p in nav_links %}
+				{% if p.nav %}
+					{% if page.url == p.url %}
+						<li class="nav-item active">
+					{% else %}
+						<li class="nav-item">
+					{% endif %}
+						<a class="nav-link" href="{{ p.url }}">{{ p.title }}</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+
+			{% assign nav_dropdowns = site.pages | where: "dropdown", "true" | sort: "position" %}
+			{% if nav_dropdowns.size > 0 %}
+			{% if page.dropdown %}
+				<li class="nav-item dropdown active">
+			{% else %}
+				<li class="nav-item dropdown">
+			{% endif %}
+				<a href="#" id="navDropdownLink" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					Dropdown
+				</a>
+				<div class="dropdown-menu nav-dropdown" aria-labelledb="navDropdownLink">
+				{% for p in site.pages %}
+					{% if p.dropdown %}
+						{% if page.url == p.url %}
+					  	<a href="{{ p.url }}" class="nav-link dropdown-item active">
+					  		{{ p.title }}
+					  	</a>
+						{% else %}
+					  	<a href="{{ p.url }}" class="nav-link dropdown-item">
+					  		{{ p.title }}
+					  	</a>
+				  	{% endif %}
+					{% endif %}
+				{% endfor %}
+				</div>
+				</li>
+				{% endif %}
+
+		</ul>
+		
+	</div>
+
+</nav>
+<!-- End of Nav -->

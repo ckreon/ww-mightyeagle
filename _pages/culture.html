@@ -1,0 +1,43 @@
+---
+layout: page
+title: Culture
+permalink: /culture/
+nav: true
+position: 2
+---
+
+<br />
+<div class="row">
+{% for post in site.categories.culture %}
+
+	<div class="col-md-6">
+
+		<a href="{{ post.url | prepend: site.baseurl }}">
+			<div class="card card-link bg-inverse mb-3">
+
+				<div class="card-block bg-inverse3">
+				  <h4 class="card-title">
+				    	{{ post.title }}
+			  	</h4>
+
+				  <h6 class="card-subtitle no-deco">
+				  	{{ post.summary }}
+				  </h6>
+				</div>
+
+				{% img {{post.image}} magick:one-fourth
+					class:'card-img img-fluid mx-auto d-block' %}
+
+				<div class="card-block card-link-text">
+			    <div class="card-text text-justify no-deco">
+			      {{ post.content | truncatewords:30 }}
+			    </div>
+				</div>
+
+			</div>
+		</a>
+
+	</div>
+
+{% endfor %}
+</div>
